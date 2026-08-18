@@ -14,7 +14,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, reca
 os.makedirs('model', exist_ok=True)
 
 # Load dataset
-df = pd.read_excel('Dry_Bean_Dataset.csv')
+df = pd.read_csv('Dry_Bean_Dataset.csv')
 
 X = df.drop(columns=['Class'])
 y = df['Class']
