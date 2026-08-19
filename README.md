@@ -10,27 +10,30 @@ Automated seed classification is essential in modern agricultural processing to 
 - **Target Classes (7):** SEKER, BARBUNYA, BOMBAY, CALI, HOROZ, SIRA, DERMASON
 
 ## GitHub Repository & Live Demo
-- **GitHub Repository:** https://github.com/your-username/dry-bean-classification-streamlit
-- **Live Streamlit Application:** https://your-app-name.streamlit.app
+- **GitHub Repository:** https://github.com/2025ac05559-glitch/dry-bean-classification
+- **Live Streamlit Application:** https://dry-bean-classification-sdmtgqh9dimqblkqdls3c9.streamlit.app/
 
 ## ML Models Comparison Table
 
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | Logistic Regression | 0.9214 | 0.9948 | 0.9354 | 0.9321 | 0.9335 | 0.9050 |
-| Decision Tree | 0.8917 | 0.9448 | 0.9084 | 0.9088 | 0.9085 | 0.8691 |
+| Decision Tree | 0.8917 | 0.9448 | 0.9089 | 0.9088 | 0.9088 | 0.8690 |
 | kNN | 0.9166 | 0.9833 | 0.9320 | 0.9271 | 0.9293 | 0.8992 |
 | Naive Bayes | 0.8979 | 0.9916 | 0.9112 | 0.9092 | 0.9091 | 0.8773 |
-| Random Forest (Ensemble) | **0.9218** | 0.9929 | **0.9362** | **0.9323** | **0.9341** | **0.9054** |
-| Gradient Boosting (Ensemble) | 0.9207 | **0.9935** | 0.9360 | 0.9309 | 0.9333 | 0.9040 |
+| Random Forest (Ensemble) | 0.9199 | 0.9930 | 0.9345 | 0.9307 | 0.9325 | 0.9032 |
+| Gradient Boosting (Ensemble) | **0.9207** | **0.9935** | **0.9360** | **0.9309** | **0.9333** | **0.9040** |
+
+*Note: The assignment requires 5 models (Logistic Regression, Decision Tree, kNN, Naive Bayes, Random Forest). Gradient Boosting is included as an additional ensemble model for comparison.*
 
 ## Model Performance Observations
 
 | ML Model Name | Performance Observations |
 | :--- | :--- |
-| **Logistic Regression** | Performed surprisingly strong (92.14% accuracy) after feature scaling due to strong linear relationships among area and perimeter dimensions. |
-| **Decision Tree** | Suffered from slight overfitting on training splits, recording the lowest overall MCC score (0.8691). |
-| **kNN** | Achieved competitive 91.66% accuracy; highly dependent on exact $z$-score feature standardization across high-dimensional space. |
-| **Naive Bayes** | High AUC (0.9916) but slightly lower accuracy (89.79%) due to feature correlation among shape factors violating the strict conditional independence assumption. |
-| **Random Forest (Ensemble)** | **Overall Winner.** Delivered highest Accuracy (0.9218), F1 Score (0.9341), and MCC (0.9054) by effective bagging across decorrelated decision trees. |
-| **Gradient Boosting (Ensemble)** | Achieved highest AUC (0.9935) and matched Random Forest closely, showing robust sequential boosting capabilities. |
+| **Logistic Regression** | Performed strongly (92.14% accuracy, highest AUC among linear/simple models) after feature scaling, since bean shape features separate the 7 classes fairly linearly. |
+| **Decision Tree** | Recorded the lowest scores across all metrics (88.9% accuracy, MCC 0.8690), consistent with a single tree overfitting the training split and generalizing worse than ensembles. |
+| **kNN** | Achieved competitive 91.66% accuracy; performance is closely tied to feature scaling (StandardScaler) since it relies on distance in feature space. |
+| **Naive Bayes** | High AUC (0.9916) but the lowest accuracy among non-tree models (89.79%), reflecting the cost of its conditional-independence assumption when shape features are correlated. |
+| **Random Forest (Ensemble)** | Strong all-around performer (91.99% accuracy, MCC 0.9032) via bagging across decorrelated trees, though marginally behind Gradient Boosting and Logistic Regression on this dataset. |
+| **Gradient Boosting (Ensemble)** | **Overall Winner.** Best balance of Accuracy (0.9207), AUC (0.9935), Precision (0.9360), Recall (0.9309), F1 (0.9333), and MCC (0.9040) via sequential boosting. |
+| **Overall Winner for this dataset** | **Gradient Boosting (Ensemble)** — best or joint-best on 5 of 6 metrics, with Logistic Regression as a close runner-up on Accuracy/AUC. |
